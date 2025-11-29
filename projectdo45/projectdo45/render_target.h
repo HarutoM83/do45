@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class render_target
+class render_target final
 {
 public:
     // コンストラクタ

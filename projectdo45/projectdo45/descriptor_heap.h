@@ -28,8 +28,8 @@ public:
     ID3D12DescriptorHeap* DescriptorHeap() const noexcept;
 
     /*
-        @brief	ディスクリプタヒープのタイプを取得する
-	    @return	ディスクリプタヒープのタイプ
+        @brief	ディスクリプタヒープを取得する
+	    @return	ディスクリプタヒープのポインタ
     */
 
     D3D12_DESCRIPTOR_HEAP_TYPE getType() const noexcept;
