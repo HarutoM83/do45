@@ -133,11 +133,13 @@
   <ItemGroup>
     <ClCompile Include="descriptor_heap.cpp" />
     <ClCompile Include="Dx12.cpp" />
+    <ClCompile Include="render_target.cpp" />
     <ClCompile Include="winmain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="descriptor_heap.h" />
     <ClInclude Include="Dx12.h" />
+    <ClInclude Include="render_target.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
