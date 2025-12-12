@@ -177,11 +177,7 @@ triangle_polygon::~triangle_polygon() {
     return true;
 }
 
-//---------------------------------------------------------------------------------
-/**
- * @brief	ポリゴンの描画
- * @param	commandList	コマンドリスト
- */
+
 [[nodiscard]] void triangle_polygon::draw(const command_list& commandList) noexcept {
     // 頂点バッファの設定
     commandList.getcl()->IASetVertexBuffers(0, 1, &vertexBufferView_);
