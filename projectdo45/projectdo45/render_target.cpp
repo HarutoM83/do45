@@ -22,7 +22,7 @@ render_target::~render_target()
     renderTargets_.resize(desc.BufferCount);
 
     // ディスクリプターヒープのハンドルを取得
-    auto handle = heap.get()->GetCPUDescriptorHandleForHeapStart();
+    auto handle = heap.DescriptorHeap()->GetCPUDescriptorHandleForHeapStart();
 
     // ディスクリプターヒープのタイプを取得
     auto heapType = heap.getType();
@@ -37,10 +37,10 @@ render_target::~render_target()
         }
 
         // レンダーターゲットビューを作成してディスクリプタヒープのハンドルと関連付ける
-        device.get()->CreateRenderTargetView(renderTargets_[i], nullptr, handle);
+        device.getd()->CreateRenderTargetView(renderTargets_[i], nullptr, handle);
 
         // 次のハンドルへ移動
-        handle.ptr += device.get()->GetDescriptorHandleIncrementSize(heapType);
+        handle.ptr += device.getd()->GetDescriptorHandleIncrementSize(heapType);
     }
 
     return true;
@@ -54,14 +54,14 @@ render_target::~render_target()
     }
 
     // ディスクリプタヒープのハンドルを取得
-    auto handle = heap.get()->GetCPUDescriptorHandleForHeapStart();
+    auto handle = heap.DescriptorHeap()->GetCPUDescriptorHandleForHeapStart();
 
     // ディスクリプタヒープのタイプを取得
     auto heapType = heap.getType();
     assert(heapType == D3D12_DESCRIPTOR_HEAP_TYPE_RTV && "ディスクリプタヒープのタイプが RTV ではありません");
 
     // インデックスに応じてハンドルを移動
-    handle.ptr += index * device.get()->GetDescriptorHandleIncrementSize(heapType);
+    handle.ptr += index * device.getd()->GetDescriptorHandleIncrementSize(heapType);
     return handle;
 }
 

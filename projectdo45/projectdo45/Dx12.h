@@ -18,5 +18,8 @@ public:
     IDXGISwapChain3* CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueue* commandQueue, HWND hwnd);
     void                EnableDebugLayer();
     ID3D12Device* device;
+    IDXGISwapChain3* swapChain;
+    [[nodiscard]] ID3D12Device* getd() const noexcept;
+    [[nodiscard]] IDXGISwapChain3* gets() const noexcept;
 };
 

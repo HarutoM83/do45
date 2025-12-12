@@ -154,7 +154,8 @@ IDXGISwapChain3* Dx12::CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueu
 
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
-void Dx12::EnableDebugLayer() {
+void Dx12::EnableDebugLayer() 
+{
 #if defined(_DEBUG)
     // デバッグインターフェースを取得
     ID3D12Debug* debugController;
