@@ -1,6 +1,6 @@
 #pragma once
 #include "Dx12.h"
-class command_allocator
+class command_allocator final
 {
 public:
     
@@ -12,7 +12,7 @@ public:
         
     void reset() noexcept;
         
-    [[nodiscard]] ID3D12CommandAllocator* get() const noexcept;
+    [[nodiscard]] ID3D12CommandAllocator* getca() const noexcept;
          
     [[nodiscard]] D3D12_COMMAND_LIST_TYPE getType() const noexcept;
 

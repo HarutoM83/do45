@@ -19,7 +19,7 @@ public:
 
     
      
-    [[nodiscard]] ID3D12GraphicsCommandList* get() const noexcept;
+    [[nodiscard]] ID3D12GraphicsCommandList* getcl() const noexcept;
 
 
 private:

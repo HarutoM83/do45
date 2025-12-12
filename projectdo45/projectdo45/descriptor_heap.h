@@ -2,7 +2,8 @@
 #include "Dx12.h"
 #include <cassert>
 
-class descriptor_heap final{
+class descriptor_heap final
+{
 public:
     // コンストラクタ
     descriptor_heap() = default;

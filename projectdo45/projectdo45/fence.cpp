@@ -3,9 +3,11 @@
 
 
  
-fence::~fence() {
+fence::~fence() 
+{
 	// フェンスの解放
-	if (fence_) {
+	if (fence_) 
+	{
 		fence_->Release();
 		fence_ = nullptr;
 	}
@@ -13,17 +15,20 @@ fence::~fence() {
 
 
  
-[[nodiscard]] bool fence::create(const Dx12& device) noexcept {
+[[nodiscard]] bool fence::create(const Dx12& device) noexcept 
+{
 
 	// フェンスの生成
 	HRESULT hr = device.getd()->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence_));
-	if (FAILED(hr)) {
+	if (FAILED(hr)) 
+	{
 		assert(false && "フェンスの作成に失敗しました");
 		return false;
 	}
 	// GPU 同期用のイベントハンドルを作成
 	waitGpuEvent_ = CreateEvent(nullptr, false, false, "WAIT_GPU");
-	if (!waitGpuEvent_) {
+	if (!waitGpuEvent_) 
+	{
 		assert(false && "GPU 同期用のイベントハンドルの作成に失敗しました");
 		return false;
 	}
@@ -32,14 +37,17 @@ fence::~fence() {
 
 
  
-void fence::wait(UINT64 fenceValue) const noexcept {
-	if (!fence_) {
+void fence::wait(UINT64 fenceValue) const noexcept 
+{
+	if (!fence_) 
+	{
 		assert(false && "フェンスが未作成です");
 		return;
 	}
 
 	// フェンスの値が指定された値に達するまで待機
-	if (fence_->GetCompletedValue() < fenceValue) {
+	if (fence_->GetCompletedValue() < fenceValue) 
+	{
 		// GPU がフェンス値に到達するまで待つ
 		fence_->SetEventOnCompletion(fenceValue, waitGpuEvent_);
 		WaitForSingleObject(waitGpuEvent_, INFINITE);
@@ -48,7 +56,7 @@ void fence::wait(UINT64 fenceValue) const noexcept {
 
 
  
-[[nodiscard]] ID3D12Fence* fence::get() const noexcept {
+[[nodiscard]] ID3D12Fence* fence::getf() const noexcept {
 	if (!fence_) {
 		assert(false && "フェンスが未作成です");
 		return nullptr;

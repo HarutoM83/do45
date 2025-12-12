@@ -1,6 +1,6 @@
 #pragma once
 #include"Dx12.h"
-class fence
+class fence final
 {
 public:
     
@@ -12,7 +12,7 @@ public:
      
     void wait(UINT64 fenceValue) const noexcept;
      
-    [[nodiscard]] ID3D12Fence* get() const noexcept;
+    [[nodiscard]] ID3D12Fence* getf() const noexcept;
 
 private:
     ID3D12Fence* fence_{};         /// ƒtƒFƒ“ƒX
