@@ -1,7 +1,5 @@
 #include "fence.h"
 #include <cassert>
-
-
  
 fence::~fence() 
 {

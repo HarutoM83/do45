@@ -3,7 +3,7 @@
 #include <dxgi1_4.h>
 #include <cassert>
 
-class Dx12
+class Dx12 final
 {
 public:
     // コンストラクタ
@@ -17,11 +17,10 @@ public:
     ID3D12CommandQueue* CreateCommandQueue(ID3D12Device* device);
     void CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueue* commandQueue, HWND hwnd);
     void                EnableDebugLayer();
-   
     ID3D12Device* device;
     IDXGISwapChain3* swapChain;
     DXGI_SWAP_CHAIN_DESC1 swapChainDesc;
-    [[nodiscard]] const DXGI_SWAP_CHAIN_DESC1& getDesc() const noexcept;
+    [[nodiscard]] DXGI_SWAP_CHAIN_DESC1& getDesc() const noexcept;
     [[nodiscard]] ID3D12Device* getd() const noexcept;
     [[nodiscard]] IDXGISwapChain3* gets() const noexcept;
 };
