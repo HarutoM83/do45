@@ -13,7 +13,7 @@ public:
     // デストラクタ
     ~render_target();
 
-    [[nodiscard]] bool createBackBuffer(const Dx12& device, const SwapChain& swapChain, const descriptor_heap& heap) noexcept;
+    [[nodiscard]] bool createBackBuffer(const Dx12& device, const Dx12& swapChain, const descriptor_heap& heap) noexcept;
 
     [[nodiscard]] D3D12_CPU_DESCRIPTOR_HANDLE getDescriptorHandle(const Dx12& device, const descriptor_heap& heap, UINT index) const noexcept;
 
