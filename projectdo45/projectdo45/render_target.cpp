@@ -14,7 +14,8 @@ render_target::~render_target()
     renderTargets_.clear();
 }
 
-[[nodiscard]] bool render_target::createBackBuffer(const Dx12& device, const SwapChain& swapChain, const descriptor_heap& heap) noexcept {
+[[nodiscard]] bool render_target::createBackBuffer(const Dx12& device, const Dx12& swapChain, const descriptor_heap& heap) noexcept 
+{
     // スワップチェインの設定を取得
     const auto& desc = swapChain.getDesc();
 
@@ -29,8 +30,9 @@ render_target::~render_target()
     assert(heapType == D3D12_DESCRIPTOR_HEAP_TYPE_RTV && "ディスクリプタヒープのタイプが RTV ではありません");
 
     // バックバッファの生成
-    for (uint8_t i = 0; i < desc.BufferCount; ++i) {
-        const auto hr = swapChain.get()->GetBuffer(i, IID_PPV_ARGS(&renderTargets_[i]));
+    for (uint8_t i = 0; i < desc.BufferCount; ++i) 
+    {
+        const auto hr = swapChain.gets()->GetBuffer(i, IID_PPV_ARGS(&renderTargets_[i]));
         if (FAILED(hr)) {
             assert(false && "バックバッファの取得に失敗しました");
             return false;
@@ -47,9 +49,11 @@ render_target::~render_target()
 }
 
 
-[[nodiscard]] D3D12_CPU_DESCRIPTOR_HANDLE render_target::getDescriptorHandle(const Dx12& device, const descriptor_heap& heap, UINT index) const noexcept {
+[[nodiscard]] D3D12_CPU_DESCRIPTOR_HANDLE render_target::getDescriptorHandle(const Dx12& device, const descriptor_heap& heap, UINT index) const noexcept 
+{
 
-    if (index >= renderTargets_.size() || !renderTargets_[index]) {
+    if (index >= renderTargets_.size() || !renderTargets_[index]) 
+    {
         assert(false && "不正なレンダーターゲットです");
     }
 
@@ -66,8 +70,10 @@ render_target::~render_target()
 }
 
 
-[[nodiscard]] ID3D12Resource* render_target::get(uint32_t index) const noexcept {
-    if (index >= renderTargets_.size() || !renderTargets_[index]) {
+[[nodiscard]] ID3D12Resource* render_target::get(uint32_t index) const noexcept 
+{
+    if (index >= renderTargets_.size() || !renderTargets_[index]) 
+    {
         assert(false && "不正なレンダーターゲットです");
         return nullptr;
     }
