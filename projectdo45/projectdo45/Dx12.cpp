@@ -118,7 +118,7 @@ ID3D12CommandQueue* Dx12::CreateCommandQueue(ID3D12Device* device)
     queueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;        // 特別フラグなし
     queueDesc.NodeMask = 0;                                    // 単一GPU使用
 
-    ID3D12CommandQueue* commandQueue;
+    
     HRESULT             hr = device->CreateCommandQueue(&queueDesc, IID_PPV_ARGS(&commandQueue));
 
     if (FAILED(hr)) 
@@ -133,6 +133,15 @@ ID3D12CommandQueue* Dx12::CreateCommandQueue(ID3D12Device* device)
     return commandQueue;
 }
 
+ID3D12CommandQueue* Dx12::getcq() const noexcept 
+{
+    if (!commandQueue_)
+    {
+        assert(false && "コマンドキュー未作成です。");
+    }
+
+    return commandQueue;
+}
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
 void Dx12::CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueue* commandQueue, HWND hwnd) 
