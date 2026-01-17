@@ -39,7 +39,7 @@ void command_allocator::reset() noexcept
     commandAllocator_->Reset();
 }
  
-[[nodiscard]] ID3D12CommandAllocator* command_allocator::getca() const noexcept 
+[[nodiscard]] ID3D12CommandAllocator* command_allocator::get() const noexcept 
 {
     if (!commandAllocator_) 
     {

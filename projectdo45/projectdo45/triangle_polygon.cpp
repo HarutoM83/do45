@@ -1,25 +1,30 @@
 #include "triangle_polygon.h"
 #include <cassert>
 #include"Dx12.h"
-namespace {
+namespace 
+{
 
    
-    struct Vertex {
+    struct Vertex 
+    {
         Dx12::XMFLOAT3 position;  // 頂点座標（x, y, z）
         Dx12::XMFLOAT4 color;     // 頂点色（r, g, b, a）
     };
 }  // namespace
 
 
-triangle_polygon::~triangle_polygon() {
+triangle_polygon::~triangle_polygon() 
+{
     // 頂点バッファの解放
-    if (vertexBuffer_) {
+    if (vertexBuffer_) 
+    {
         vertexBuffer_->Release();
         vertexBuffer_ = nullptr;
     }
 
     // インデックスバッファの解放
-    if (indexBuffer_) {
+    if (indexBuffer_) 
+    {
         indexBuffer_->Release();
         indexBuffer_ = nullptr;
     }
@@ -28,11 +33,13 @@ triangle_polygon::~triangle_polygon() {
 
 [[nodiscard]] bool triangle_polygon::create(const Dx12& device) noexcept {
     // 頂点バッファの生成
-    if (!createVertexBuffer(device)) {
+    if (!createVertexBuffer(device)) 
+    {
         return false;
     }
     // インデックスバッファの生成
-    if (!createIndexBuffer(device)) {
+    if (!createIndexBuffer(device)) 
+    {
         return false;
     }
     return true;
@@ -41,7 +48,8 @@ triangle_polygon::~triangle_polygon() {
 
 [[nodiscard]] bool triangle_polygon::createVertexBuffer(const Dx12& device) noexcept {
     // 今回利用する三角形の頂点データ
-    Vertex triangleVertices[] = {
+    Vertex triangleVertices[] = 
+    {
         {  {0.0f, 0.5f, 0.0f}, {1.0f, 0.0f, 0.0f, 1.0f}}, // 上頂点（赤色）
         { {0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f, 1.0f}}, // 右下頂点（緑色）
         {{-0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 1.0f, 1.0f}}  // 左下頂点（青色）
@@ -81,7 +89,8 @@ triangle_polygon::~triangle_polygon() {
         D3D12_RESOURCE_STATE_GENERIC_READ,
         nullptr,
         IID_PPV_ARGS(&vertexBuffer_));
-    if (FAILED(res)) {
+    if (FAILED(res)) 
+    {
         assert(false && "頂点バッファの作成に失敗");
         return false;
     }
@@ -93,7 +102,8 @@ triangle_polygon::~triangle_polygon() {
     // バッファをマップ（CPUからアクセス可能にする）
     // vertexBuffer_ を直接利用するのではなく、data を介して更新するイメージ
     res = vertexBuffer_->Map(0, nullptr, reinterpret_cast<void**>(&data));
-    if (FAILED(res)) {
+    if (FAILED(res)) 
+    {
         assert(false && "頂点バッファのマップに失敗");
         return false;
     }
@@ -115,7 +125,8 @@ triangle_polygon::~triangle_polygon() {
 
 
 [[nodiscard]] bool triangle_polygon::createIndexBuffer(const Dx12& device) noexcept {
-    uint16_t triangleIndices[] = {
+    uint16_t triangleIndices[] = 
+    {
         0, 1, 2  // 三角形を構成する頂点のインデックス
     };
 
@@ -152,7 +163,8 @@ triangle_polygon::~triangle_polygon() {
         D3D12_RESOURCE_STATE_GENERIC_READ,
         nullptr,
         IID_PPV_ARGS(&indexBuffer_));
-    if (FAILED(res)) {
+    if (FAILED(res)) 
+    {
         assert(false && "インデックスバッファの作成に失敗");
         return false;
     }
@@ -160,7 +172,8 @@ triangle_polygon::~triangle_polygon() {
     // インデックスバッファにデータを転送する
     uint16_t* data{};
     res = indexBuffer_->Map(0, nullptr, reinterpret_cast<void**>(&data));
-    if (FAILED(res)) {
+    if (FAILED(res)) 
+    {
         assert(false && "インデックスバッファのマップに失敗");
         return false;
     }
@@ -180,10 +193,10 @@ triangle_polygon::~triangle_polygon() {
 
 [[nodiscard]] void triangle_polygon::draw(const command_list& commandList) noexcept {
     // 頂点バッファの設定
-    commandList.getcl()->IASetVertexBuffers(0, 1, &vertexBufferView_);
+    commandList.get()->IASetVertexBuffers(0, 1, &vertexBufferView_);
     // インデックスバッファの設定
-    commandList.getcl()->IASetIndexBuffer(&indexBufferView_);
+    commandList.get()->IASetIndexBuffer(&indexBufferView_);
     // プリミティブ形状の設定（三角形）
-    commandList.getcl()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+    commandList.get()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     // 描画コマンド
-    commandList.getcl()->DrawIndexedInstanced(3, 1, 0, 0, 0);
+    commandList.get()->DrawIndexedInstanced(3, 1, 0, 0, 0);

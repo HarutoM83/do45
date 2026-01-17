@@ -54,7 +54,7 @@ void fence::wait(UINT64 fenceValue) const noexcept
 
 
  
-[[nodiscard]] ID3D12Fence* fence::getf() const noexcept {
+[[nodiscard]] ID3D12Fence* fence::get() const noexcept {
 	if (!fence_) {
 		assert(false && "ƒtƒFƒ“ƒX‚ª–¢ì¬‚Å‚·");
 		return nullptr;

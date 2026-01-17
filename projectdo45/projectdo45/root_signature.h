@@ -13,7 +13,7 @@ public:
     [[nodiscard]] bool create(const Dx12& device) noexcept;
 
     
-    [[nodiscard]] ID3D12RootSignature* getr() const noexcept;
+    [[nodiscard]] ID3D12RootSignature* get() const noexcept;
 
 private:
     ID3D12RootSignature* rootSignature_{};  /// ルートシグネチャ

@@ -35,7 +35,8 @@ IDXGIAdapter1* Dx12::GetHardwareAdapter(IDXGIFactory4* factory) {
     for (UINT adapterIndex = 0;; ++adapterIndex) 
     {
         adapter = nullptr;
-        if (DXGI_ERROR_NOT_FOUND == factory->EnumAdapters1(adapterIndex, &adapter)) {
+        if (DXGI_ERROR_NOT_FOUND == factory->EnumAdapters1(adapterIndex, &adapter)) 
+        {
             break;  // アダプターが見つからない場合は終了
         }
 
@@ -96,6 +97,16 @@ void Dx12::CreateD3D12Device(IDXGIAdapter1* adapter)
     
 }
 
+ID3D12Device* Dx12::getd() const noexcept 
+{
+    if (!device_) 
+    {
+        assert(false && "デバイス未作成です。");
+    }
+
+    return device;
+}
+
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
 ID3D12CommandQueue* Dx12::CreateCommandQueue(ID3D12Device* device) 
@@ -154,7 +165,7 @@ void Dx12::CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueue* commandQu
     }
 
     // より高機能なインターフェースにキャスト
-    IDXGISwapChain3* swapChain;
+    
     hr = swapChain1->QueryInterface(IID_PPV_ARGS(&swapChain));
     swapChain1->Release();
 
@@ -165,6 +176,24 @@ void Dx12::CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueue* commandQu
     }
 
     //return swapChain;
+}
+
+IDXGISwapChain3* Dx12::getsc()const noexcept 
+{
+    if (!swapChain_)
+    {
+        assert(false && "スワップチェインが未作成です。");
+    }
+    return swapChain_;
+}
+
+const DXGI_SWAP_CHAIN_DESC1& Dx12::getDesc() const noexcept
+{
+    if (!swapChain_)
+    {
+        assert(false && "スワップチェインが未作成です。");
+    }
+    return swapChainDesc_;
 }
 
 // -------------------------------------------------------------------------

@@ -18,7 +18,7 @@ command_list::~command_list()
 [[nodiscard]] bool command_list::create(const Dx12& device, const command_allocator& commandAllocator) noexcept 
 {
     // コマンドリストの作成
-    const auto hr = device.getd()->CreateCommandList(0, commandAllocator.getType(), commandAllocator.getca(), nullptr, IID_PPV_ARGS(&commandList_));
+    const auto hr = device.getd()->CreateCommandList(0, commandAllocator.getType(), commandAllocator.get(), nullptr, IID_PPV_ARGS(&commandList_));
     if (FAILED(hr)) 
     {
         assert(false && "コマンドリストの作成に失敗しました");
@@ -40,12 +40,12 @@ void command_list::reset(const command_allocator& commandAllocator) noexcept
     }
 
     // コマンドリストをリセット
-    commandList_->Reset(commandAllocator.getca(), nullptr);
+    commandList_->Reset(commandAllocator.get(), nullptr);
 }
 
 //---------------------------------------------------------------------------------
 
-[[nodiscard]] ID3D12GraphicsCommandList* command_list::getcl() const noexcept 
+[[nodiscard]] ID3D12GraphicsCommandList* command_list::get() const noexcept 
 {
     if (!commandList_) 
     {

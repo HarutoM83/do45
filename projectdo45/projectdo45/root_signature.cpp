@@ -64,7 +64,7 @@ root_signature::~root_signature()
 }
 
 
-[[nodiscard]] ID3D12RootSignature* root_signature::getr() const noexcept {
+[[nodiscard]] ID3D12RootSignature* root_signature::get() const noexcept {
     if (!rootSignature_) {
         assert(false && "ルートシグネチャが生成されていません");
     }

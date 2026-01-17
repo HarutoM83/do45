@@ -31,3 +31,5 @@ private:
     D3D12_INDEX_BUFFER_VIEW  indexBufferView_ = {};  ///< インデックスバッファビュー
 };
 
+
+

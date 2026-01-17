@@ -20,8 +20,13 @@ public:
     ID3D12Device* device;
     IDXGISwapChain3* swapChain;
     DXGI_SWAP_CHAIN_DESC1 swapChainDesc;
-    [[nodiscard]] DXGI_SWAP_CHAIN_DESC1& getDesc() const noexcept;
+    
+    [[nodiscard]] const DXGI_SWAP_CHAIN_DESC1& getDesc() const noexcept;
     [[nodiscard]] ID3D12Device* getd() const noexcept;
-    [[nodiscard]] IDXGISwapChain3* gets() const noexcept;
+    [[nodiscard]] IDXGISwapChain3* getsc() const noexcept;
+    
+private:
+    ID3D12Device* device_{};//デバイス
+    IDXGISwapChain3* swapChain_{};//スワップチェイン
+    DXGI_SWAP_CHAIN_DESC1 swapChainDesc_{};//スワップチェインの設定
 };
-

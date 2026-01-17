@@ -16,7 +16,7 @@ public:
     [[nodiscard]] bool create(const Dx12& device, const shader& shader, const root_signature& rootSignature) noexcept;
 
     
-    [[nodiscard]] ID3D12PipelineState* getp() const noexcept;
+    [[nodiscard]] ID3D12PipelineState* get() const noexcept;
 
 private:
     ID3D12PipelineState* pipelineState_ = {};  ///< パイプラインステート

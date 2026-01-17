@@ -60,7 +60,7 @@ pipline_state_object::~pipline_state_object() {
     // 各種設定を構造体にまとめる
     D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc{};
     psoDesc.InputLayout = { inputElementDescs, _countof(inputElementDescs) };
-    psoDesc.pRootSignature = rootSignature.getr();
+    psoDesc.pRootSignature = rootSignature.get();
     psoDesc.VS = { shader.vertexShader()->GetBufferPointer(), shader.vertexShader()->GetBufferSize() };
     psoDesc.PS = { shader.pixelShader()->GetBufferPointer(), shader.pixelShader()->GetBufferSize() };
     psoDesc.RasterizerState = rasterizerDesc;
@@ -82,7 +82,7 @@ pipline_state_object::~pipline_state_object() {
 }
 
 
-[[nodiscard]] ID3D12PipelineState* pipline_state_object::getp() const noexcept {
+[[nodiscard]] ID3D12PipelineState* pipline_state_object::get() const noexcept {
     if (!pipelineState_) 
     {
         assert(false && "パイプラインステートが未作成です");

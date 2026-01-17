@@ -12,7 +12,7 @@ public:
      
     void wait(UINT64 fenceValue) const noexcept;
      
-    [[nodiscard]] ID3D12Fence* getf() const noexcept;
+    [[nodiscard]] ID3D12Fence* get() const noexcept;
 
 private:
     ID3D12Fence* fence_{};         /// ƒtƒFƒ“ƒX

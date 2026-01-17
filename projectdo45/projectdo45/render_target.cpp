@@ -32,7 +32,7 @@ render_target::~render_target()
     // バックバッファの生成
     for (uint8_t i = 0; i < desc.BufferCount; ++i) 
     {
-        const auto hr = swapChain.gets()->GetBuffer(i, IID_PPV_ARGS(&renderTargets_[i]));
+        const auto hr = swapChain.getsc()->GetBuffer(i, IID_PPV_ARGS(&renderTargets_[i]));
         if (FAILED(hr)) {
             assert(false && "バックバッファの取得に失敗しました");
             return false;
