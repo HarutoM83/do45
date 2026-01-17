@@ -65,7 +65,7 @@ IDXGIAdapter1* Dx12::GetHardwareAdapter(IDXGIFactory4* factory) {
 
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
-void Dx12::CreateD3D12Device(IDXGIAdapter1* adapter) 
+ID3D12Device* Dx12::CreateD3D12Device(IDXGIAdapter1* adapter)
 {
     
 
@@ -144,7 +144,7 @@ ID3D12CommandQueue* Dx12::getcq() const noexcept
 }
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
-void Dx12::CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueue* commandQueue, HWND hwnd) 
+IDXGISwapChain3* Dx12::CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueue* commandQueue, HWND hwnd)
 {
     // スワップチェーンの詳細設定
     DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {};

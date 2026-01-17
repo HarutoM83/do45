@@ -3,12 +3,10 @@
 #include"Dx12.h"
 namespace 
 {
-
-   
     struct Vertex 
     {
-        Dx12::XMFLOAT3 position;  // 頂点座標（x, y, z）
-        Dx12::XMFLOAT4 color;     // 頂点色（r, g, b, a）
+        DirectX::XMFLOAT3 position;  // 頂点座標（x, y, z）
+        DirectX::XMFLOAT4 color;     // 頂点色（r, g, b, a）
     };
 }  // namespace
 

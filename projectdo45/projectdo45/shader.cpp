@@ -7,7 +7,6 @@
 
 using namespace std;
 
-
 shader::~shader() 
 {
     // 頂点シェーダの解放
@@ -30,7 +29,7 @@ shader::~shader()
     // シェーダを読込、コンパイルして生成する
 
     // シェーダファイルのパス
-    const string  filePath = "asset/shader.hlsl";
+    const string  filePath = "shader.hlsl"; //"asset/shader.hlsl";
     const wstring temp = wstring(filePath.begin(), filePath.end());
     // シェーダのコンパイルエラーなどが分かる様にする
     ID3DBlob* error{};

@@ -1,4 +1,5 @@
 //#include "Window.h"
+//#include <Window.h>
 #include "winmain.cpp"
 #include "DX12.h"
 #include "command_allocator.h"
@@ -42,28 +43,28 @@ public:
         }
 
         // Dx12 の生成
-        if (!dxgiInstance_.setDisplayAdapter()) 
+        if (!dxgiInstance_.GetHardwareAdapter())
         {
             assert(false && "DXGIのアダプタ設定に失敗しました");
             return false;
         }
 
         // デバイスの生成
-        if (!deviceInstance_.create(dxgiInstance_)) 
+        if (!deviceInstance_.CreateD3D12Device(dxgiInstance_))
         {
             assert(false && "デバイスの作成に失敗しました");
             return false;
         }
 
         // コマンドキューの生成
-        if (!commandQueueInstance_.create(deviceInstance_)) 
+        if (!commandQueueInstance_.CreateCommandQueue(deviceInstance_))
         {
             assert(false && "コマンドキューの作成に失敗しました");
             return false;
         }
 
         // スワップチェインの生成
-        if (!swapChainInstance_.create(dxgiInstance_, windowInstance_, commandQueueInstance_)) 
+        if (!swapChainInstance_.CreateSwapChain(dxgiInstance_, windowInstance_, commandQueueInstance_))
         {
             assert(false && "スワップチェインの作成に失敗しました");
             return false;
