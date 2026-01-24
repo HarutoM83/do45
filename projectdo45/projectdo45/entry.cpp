@@ -1,5 +1,5 @@
 //#include "Window.h"
-//#include <Window.h>
+#include <Windows.h>
 #include "winmain.cpp"
 #include "DX12.h"
 #include "command_allocator.h"
@@ -33,17 +33,17 @@ public:
      * @brief	アプリケーションの初期化
      * @return	初期化の成否
      */
-    [[nodiscard]] bool initialize(HINSTANCE instance) noexcept 
+    [[nodiscard]] bool initialize(HINSTANCE hInstance) noexcept
     {
         // ウィンドウの生成
-        if (S_OK != windowInstance_.create(instance, 1280, 720, "MyApp")) 
+        if (S_OK != windowInstance_.create(hInstance, 1280, 720, "MyApp"))
         {
             assert(false && "ウィンドウの生成に失敗しました");
             return false;
         }
 
         // Dx12 の生成
-        if (!dxgiInstance_.GetHardwareAdapter())
+        if (!dxgiInstance_.CreateDXGIFactory())
         {
             assert(false && "DXGIのアダプタ設定に失敗しました");
             return false;
@@ -243,7 +243,7 @@ public:
     }
 
 private:
-    WinMain          windowInstance_{};               /// ウィンドウインスタンス
+             windowInstance_{};               /// ウィンドウインスタンス
     //
 
     Dx12             dxgiInstance_{};                 /// Dx12 インスタンス

@@ -135,11 +135,13 @@
     <ClCompile Include="command_list.cpp" />
     <ClCompile Include="descriptor_heap.cpp" />
     <ClCompile Include="Dx12.cpp" />
+    <ClCompile Include="entry.cpp" />
     <ClCompile Include="fence.cpp" />
     <ClCompile Include="pipline_state_object.cpp" />
     <ClCompile Include="render_target.cpp" />
     <ClCompile Include="root_signature.cpp" />
     <ClCompile Include="shader.cpp" />
+    <ClCompile Include="triangle_polygon.cpp" />
     <ClCompile Include="winmain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +154,7 @@
     <ClInclude Include="render_target.h" />
     <ClInclude Include="root_signature.h" />
     <ClInclude Include="shader.h" />
+    <ClInclude Include="triangle_polygon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

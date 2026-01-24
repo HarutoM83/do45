@@ -1,6 +1,5 @@
 #include <Windows.h>
 
-
 LRESULT CALLBACK WindowProc
 (   
     HWND hwnd, 

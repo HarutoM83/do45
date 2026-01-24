@@ -1,5 +1,6 @@
 #include "triangle_polygon.h"
 #include <cassert>
+#include<DirectXMath.h>
 #include"Dx12.h"
 namespace 
 {
