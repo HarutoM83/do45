@@ -23,7 +23,7 @@ LRESULT CALLBACK WindowProc
     // 自分で処理しないメッセージはWindowsに任せる
     return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
-    
+
 int WINAPI WinMain
 (
     HINSTANCE hInstance,      // アプリケーションの識別番号
@@ -33,7 +33,7 @@ int WINAPI WinMain
 )
 {
     // ここにメインの処理を書く
-    
+
     // 1. ウィンドウクラス登録
 
     WNDCLASS wc{};
@@ -64,7 +64,7 @@ int WINAPI WinMain
     bool nextFream = true;
 
     //ゲームループ
-    while (nextFream) 
+    while (nextFream)
     {
         // 3. メッセージループ
         MSG msg{};  // メッセージを格納する構造体
@@ -78,4 +78,11 @@ int WINAPI WinMain
 
 
     return 0;
-}
+};
+
+/*
+class Window final 
+{
+
+};
+*/
