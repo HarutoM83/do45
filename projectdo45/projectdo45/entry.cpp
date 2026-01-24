@@ -242,7 +242,7 @@ public:
     }
 
 private:
-    w              windowInstance_{};               /// ウィンドウインスタンス
+    winmain              windowInstance_{};               /// ウィンドウインスタンス
     //
 
     Dx12             dxgiInstance_{};                 /// Dx12 インスタンス
