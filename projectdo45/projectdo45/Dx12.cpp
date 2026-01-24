@@ -87,12 +87,12 @@ ID3D12Device* Dx12::CreateD3D12Device(IDXGIAdapter1* adapter)
         if (FAILED(hr)) 
         {
             OutputDebugString("Failed to create D3D12 Device\n");
-          //return nullptr;
+            return nullptr;
         }
 
         OutputDebugString("Using software adapter (WARP)\n");
     }
-
+    return device;
     
 }
 
@@ -169,7 +169,7 @@ IDXGISwapChain3* Dx12::CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueu
     if (FAILED(hr)) 
     {
         OutputDebugString("Failed to create Swap Chain\n");
-        //return nullptr;
+        return nullptr;
     }
 
     // より高機能なインターフェースにキャスト
@@ -180,10 +180,10 @@ IDXGISwapChain3* Dx12::CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueu
     if (FAILED(hr)) 
     {
         OutputDebugString("Failed to cast to SwapChain3\n");
-        //return nullptr;
+        return nullptr;
     }
 
-    //return swapChain;
+    return swapChain;
 }
 
 IDXGISwapChain3* Dx12::getsc()const noexcept 

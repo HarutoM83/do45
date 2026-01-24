@@ -199,3 +199,4 @@ triangle_polygon::~triangle_polygon()
     commandList.get()->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     // •`‰æƒRƒ}ƒ“ƒh
     commandList.get()->DrawIndexedInstanced(3, 1, 0, 0, 0);
+};
