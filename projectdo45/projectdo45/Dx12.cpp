@@ -143,8 +143,10 @@ ID3D12CommandQueue* Dx12::getcq() const noexcept
 }
 // -------------------------------------------------------------------------
 // -------------------------------------------------------------------------
-IDXGISwapChain3* Dx12::CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueue* commandQueue, HWND hwnd)
+IDXGISwapChain3* Dx12::CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueue* commandQueue, HWND hwnd , Window window)
 {
+    const auto [w, h] = window.size();
+
     // スワップチェーンの詳細設定
     DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {};
     swapChainDesc.BufferCount = 2;                                // ダブルバッファリング
