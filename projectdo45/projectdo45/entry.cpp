@@ -1,4 +1,3 @@
-//#include "Window.h"
 #include "winmain.cpp"
 #include "DX12.h"
 #include "command_allocator.h"
@@ -35,7 +34,7 @@ public:
     [[nodiscard]] bool initialize(HINSTANCE hInstance) noexcept
     {
         // ウィンドウの生成
-        if (S_OK != windowInstance_.WinMain(hInstance, 1280, 720, "MyApp"))
+        if (S_OK != windowInstance_.create(hInstance, 1280, 720, "MyApp"))
         {
             assert(false && "ウィンドウの生成に失敗しました");
             return false;
@@ -145,7 +144,7 @@ public:
     
     void loop() noexcept 
     {
-        while (windowInstance_.WinMain()) {
+        while (windowInstance_.messageloop()) {
             // 現在のバックバッファインデックスを取得
             const auto backBufferIndex = swapChainInstance_.getsc()->GetCurrentBackBufferIndex();
 
@@ -180,7 +179,7 @@ public:
             commandListInstance_.get()->SetGraphicsRootSignature(rootSignatureInstance_.get());
 
             // ビューポートの設定
-            const auto [w, h] = windowInstance_.WinMain();
+            const auto [w, h] = windowInstance_.size();
             D3D12_VIEWPORT viewport{};
             viewport.TopLeftX = 0.0f;
             viewport.TopLeftY = 0.0f;
@@ -242,7 +241,7 @@ public:
     }
 
 private:
-    winmain              windowInstance_{};               /// ウィンドウインスタンス
+    Window              windowInstance_{};               /// ウィンドウインスタンス
     //
 
     Dx12             dxgiInstance_{};                 /// Dx12 インスタンス

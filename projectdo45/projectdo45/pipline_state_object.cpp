@@ -2,7 +2,8 @@
 #include <cassert>
 
 
-pipline_state_object::~pipline_state_object() {
+pipline_state_object::~pipline_state_object() 
+{
     // パイプラインステートの解放
     if (pipelineState_) {
         pipelineState_->Release();
@@ -11,7 +12,8 @@ pipline_state_object::~pipline_state_object() {
 }
 
 
-[[nodiscard]] bool pipline_state_object::create(const Dx12& device, const shader& shader, const root_signature& rootSignature) noexcept {
+[[nodiscard]] bool pipline_state_object::create(const Dx12& device, const shader& shader, const root_signature& rootSignature) noexcept 
+{
     // 頂点レイアウト
     // 頂点バッファのフォーマットに合わせて設定する
     D3D12_INPUT_ELEMENT_DESC inputElementDescs[] = {
@@ -36,7 +38,8 @@ pipline_state_object::~pipline_state_object() {
 
     // ブレンドステート
     // 描画結果の合成方法を設定する
-    const D3D12_RENDER_TARGET_BLEND_DESC defaultRenderTargetBlendDesc = {
+    const D3D12_RENDER_TARGET_BLEND_DESC defaultRenderTargetBlendDesc = 
+    {
         FALSE,
         FALSE,
         D3D12_BLEND_ONE,
@@ -82,7 +85,8 @@ pipline_state_object::~pipline_state_object() {
 }
 
 
-[[nodiscard]] ID3D12PipelineState* pipline_state_object::get() const noexcept {
+[[nodiscard]] ID3D12PipelineState* pipline_state_object::get() const noexcept 
+{
     if (!pipelineState_) 
     {
         assert(false && "パイプラインステートが未作成です");

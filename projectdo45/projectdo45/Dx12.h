@@ -2,6 +2,7 @@
 #include <d3d12.h>
 #include <dxgi1_4.h>
 #include <cassert>
+#include "winmain.cpp"
 
 class Dx12 final
 {
@@ -24,7 +25,7 @@ public:
     
     bool CreateD3D12Device(const Dx12& dxgi) noexcept;
     bool CreateCommandQueue(const Dx12& dxgi) noexcept;
-    bool CreateSwapChain(const Dx12& dxgi, const HWND& hwnd, const Dx12& commandQueue) noexcept;
+    bool CreateSwapChain(const Dx12& dxgi, const Window& window, const Dx12& commandQueue) noexcept;
     //[[nodiscard]] bool create(const Dx12& dxgi) noexcept;
     [[nodiscard]] const DXGI_SWAP_CHAIN_DESC1& getDesc() const noexcept;
     [[nodiscard]] ID3D12Device* getd() const noexcept;
