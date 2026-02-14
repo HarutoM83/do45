@@ -19,6 +19,5 @@ public:
 private:
     ID3D12CommandAllocator* commandAllocator_{};  /// コマンドアロケータ
     D3D12_COMMAND_LIST_TYPE type_{};              /// コマンドリストのタイプ
-    
 };
 

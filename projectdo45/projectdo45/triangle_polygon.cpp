@@ -29,7 +29,6 @@ triangle_polygon::~triangle_polygon()
     }
 }
 
-
 [[nodiscard]] bool triangle_polygon::create(const Dx12& device) noexcept {
     // 頂点バッファの生成
     if (!createVertexBuffer(device)) 
@@ -43,7 +42,6 @@ triangle_polygon::~triangle_polygon()
     }
     return true;
 }
-
 
 [[nodiscard]] bool triangle_polygon::createVertexBuffer(const Dx12& device) noexcept {
     // 今回利用する三角形の頂点データ
@@ -188,7 +186,6 @@ triangle_polygon::~triangle_polygon()
 
     return true;
 }
-
 
 [[nodiscard]] void triangle_polygon::draw(const command_list& commandList) noexcept {
     // 頂点バッファの設定

@@ -6,21 +6,17 @@ class triangle_polygon final
 public:
     
     triangle_polygon() = default;
-
-    
+        
     ~triangle_polygon();
-
-    
+        
     [[nodiscard]] bool create(const Dx12& device) noexcept;
 
     [[nodiscard]] void draw(const command_list& commandList) noexcept;
-
 
 private:
     
     [[nodiscard]] bool createVertexBuffer(const Dx12& device) noexcept;
 
-   
     [[nodiscard]] bool createIndexBuffer(const Dx12& device) noexcept;
 
 private:

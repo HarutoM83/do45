@@ -5,12 +5,12 @@
 pipline_state_object::~pipline_state_object() 
 {
     // パイプラインステートの解放
-    if (pipelineState_) {
+    if (pipelineState_) 
+    {
         pipelineState_->Release();
         pipelineState_ = nullptr;
     }
 }
-
 
 [[nodiscard]] bool pipline_state_object::create(const Dx12& device, const shader& shader, const root_signature& rootSignature) noexcept 
 {
@@ -83,7 +83,6 @@ pipline_state_object::~pipline_state_object()
 
     return true;
 }
-
 
 [[nodiscard]] ID3D12PipelineState* pipline_state_object::get() const noexcept 
 {

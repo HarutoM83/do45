@@ -22,7 +22,6 @@ IDXGIFactory4* Dx12::CreateDXGIFactory()
         OutputDebugString("Failed to create DXGI Factory\n");
         return nullptr;
     }
-
     return factory;
 }
 
@@ -56,10 +55,8 @@ IDXGIAdapter1* Dx12::GetHardwareAdapter(IDXGIFactory4* factory) {
         {
             return adapter;  // 適切なアダプターを発見
         }
-
         adapter->Release();
     }
-
     return nullptr;
 }
 
@@ -67,7 +64,6 @@ IDXGIAdapter1* Dx12::GetHardwareAdapter(IDXGIFactory4* factory) {
 // -------------------------------------------------------------------------
 ID3D12Device* Dx12::CreateD3D12Device(IDXGIAdapter1* adapter)
 {
-
     // デバイス作成を試行
     HRESULT hr = D3D12CreateDevice
     (
@@ -93,7 +89,6 @@ ID3D12Device* Dx12::CreateD3D12Device(IDXGIAdapter1* adapter)
         OutputDebugString("Using software adapter (WARP)\n");
     }
     return device;
-    
 }
 
 ID3D12Device* Dx12::getd() const noexcept 
@@ -102,7 +97,6 @@ ID3D12Device* Dx12::getd() const noexcept
     {
         assert(false && "デバイス未作成です。");
     }
-
     return device;
 }
 
@@ -116,7 +110,6 @@ ID3D12CommandQueue* Dx12::CreateCommandQueue(ID3D12Device* device)
     queueDesc.Priority = D3D12_COMMAND_QUEUE_PRIORITY_NORMAL;  // 通常優先度
     queueDesc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;        // 特別フラグなし
     queueDesc.NodeMask = 0;                                    // 単一GPU使用
-
     
     HRESULT             hr = device->CreateCommandQueue(&queueDesc, IID_PPV_ARGS(&commandQueue));
 
@@ -128,7 +121,6 @@ ID3D12CommandQueue* Dx12::CreateCommandQueue(ID3D12Device* device)
 
     // デバッグ用の名前設定（任意だが推奨）
     commandQueue->SetName(L"Main Command Queue");
-
     return commandQueue;
 }
 
@@ -138,7 +130,6 @@ ID3D12CommandQueue* Dx12::getcq() const noexcept
     {
         assert(false && "コマンドキュー未作成です。");
     }
-
     return commandQueue;
 }
 // -------------------------------------------------------------------------
@@ -175,7 +166,6 @@ IDXGISwapChain3* Dx12::CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueu
     }
 
     // より高機能なインターフェースにキャスト
-    
     hr = swapChain1->QueryInterface(IID_PPV_ARGS(&swapChain));
     swapChain1->Release();
 
@@ -184,7 +174,6 @@ IDXGISwapChain3* Dx12::CreateSwapChain(IDXGIFactory4* factory, ID3D12CommandQueu
         OutputDebugString("Failed to cast to SwapChain3\n");
         return nullptr;
     }
-
     return swapChain;
 }
 
@@ -213,13 +202,15 @@ void Dx12::EnableDebugLayer()
 #if defined(_DEBUG)
     // デバッグインターフェースを取得
     ID3D12Debug* debugController;
-    if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(&debugController)))) {
+    if (SUCCEEDED(D3D12GetDebugInterface(IID_PPV_ARGS(&debugController)))) 
+    {
         // デバッグレイヤーを有効化
         debugController->EnableDebugLayer();
 
         // より詳細な検証を有効化（任意）
         ID3D12Debug1* debugController1;
-        if (SUCCEEDED(debugController->QueryInterface(IID_PPV_ARGS(&debugController1)))) {
+        if (SUCCEEDED(debugController->QueryInterface(IID_PPV_ARGS(&debugController1)))) 
+        {
             debugController1->SetEnableGPUBasedValidation(TRUE);
         }
     }

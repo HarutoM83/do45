@@ -1,7 +1,6 @@
 #include "root_signature.h"
 #include <cassert>
 
-
 root_signature::~root_signature() 
 {
     // コマンドアロケータの解放
@@ -11,7 +10,6 @@ root_signature::~root_signature()
         rootSignature_ = nullptr;
     }
 }
-
 
 [[nodiscard]] bool root_signature::create(const Dx12& device) noexcept 
 {
@@ -47,7 +45,6 @@ root_signature::~root_signature()
             signature->GetBufferSize(),
             IID_PPV_ARGS(&rootSignature_)
         );
-
         success &= SUCCEEDED(res);
         if (!success) 
         {
@@ -63,11 +60,11 @@ root_signature::~root_signature()
     return success;
 }
 
-
-[[nodiscard]] ID3D12RootSignature* root_signature::get() const noexcept {
-    if (!rootSignature_) {
+[[nodiscard]] ID3D12RootSignature* root_signature::get() const noexcept 
+{
+    if (!rootSignature_) 
+    {
         assert(false && "ルートシグネチャが生成されていません");
     }
-
     return rootSignature_;
 }

@@ -23,7 +23,6 @@ shader::~shader()
     }
 }
 
-
 [[nodiscard]] bool shader::create(const Dx12& device) noexcept 
 {
     // シェーダを読込、コンパイルして生成する
@@ -46,28 +45,24 @@ shader::~shader()
         char* p = static_cast<char*>(error->GetBufferPointer());
         assert(false && "ピクセルシェーダのコンパイルに失敗しました");
     }
-
     if (error) 
     {
         error->Release();
     }
-
     return true;
 }
 
-
-[[nodiscard]] ID3DBlob* shader::vertexShader() const noexcept {
+[[nodiscard]] ID3DBlob* shader::vertexShader() const noexcept 
+{
     if (!vertexShader_) 
     {
         assert(false && "頂点シェーダが未作成です");
     }
-
     return vertexShader_;
 }
-
-
  
-[[nodiscard]] ID3DBlob* shader::pixelShader() const noexcept {
+[[nodiscard]] ID3DBlob* shader::pixelShader() const noexcept 
+{
     if (!pixelShader_) 
     {
         assert(false && "ピクセルシェーダが未作成です");

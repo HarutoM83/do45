@@ -44,14 +44,12 @@ render_target::~render_target()
         // 次のハンドルへ移動
         handle.ptr += device.getd()->GetDescriptorHandleIncrementSize(heapType);
     }
-
     return true;
 }
 
 
 [[nodiscard]] D3D12_CPU_DESCRIPTOR_HANDLE render_target::getDescriptorHandle(const Dx12& device, const descriptor_heap& heap, UINT index) const noexcept 
 {
-
     if (index >= renderTargets_.size() || !renderTargets_[index]) 
     {
         assert(false && "不正なレンダーターゲットです");
@@ -68,7 +66,6 @@ render_target::~render_target()
     handle.ptr += index * device.getd()->GetDescriptorHandleIncrementSize(heapType);
     return handle;
 }
-
 
 [[nodiscard]] ID3D12Resource* render_target::get(uint32_t index) const noexcept 
 {

@@ -23,7 +23,8 @@ descriptor_heap::~descriptor_heap()
 
     // ディスクリプタヒープの生成
     HRESULT hr = dx12.device->CreateDescriptorHeap(&heapDesc, IID_PPV_ARGS(&heap_));
-    if (FAILED(hr)) {
+    if (FAILED(hr)) 
+    {
         assert(false && "ディスクリプタヒープの生成に失敗しました");
         return false;
     }

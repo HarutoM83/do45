@@ -10,8 +10,6 @@ fence::~fence()
 		fence_ = nullptr;
 	}
 }
-
-
  
 [[nodiscard]] bool fence::create(const Dx12& device) noexcept 
 {
@@ -33,8 +31,6 @@ fence::~fence()
 	return true;
 }
 
-
- 
 void fence::wait(UINT64 fenceValue) const noexcept 
 {
 	if (!fence_) 
@@ -52,8 +48,6 @@ void fence::wait(UINT64 fenceValue) const noexcept
 	}
 }
 
-
- 
 [[nodiscard]] ID3D12Fence* fence::get() const noexcept {
 	if (!fence_) {
 		assert(false && "ÉtÉFÉìÉXÇ™ñ¢çÏê¨Ç≈Ç∑");
