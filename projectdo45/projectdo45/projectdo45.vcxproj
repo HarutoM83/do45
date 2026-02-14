@@ -156,6 +156,7 @@
     <ClInclude Include="root_signature.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="triangle_polygon.h" />
+    <ClInclude Include="winmain.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="projectdo45.rc" />

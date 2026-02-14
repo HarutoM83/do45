@@ -1,4 +1,4 @@
-#include "winmain.cpp"
+#include "winmain.h"
 #include "DX12.h"
 #include "command_allocator.h"
 #include "command_list.h"
@@ -244,28 +244,28 @@ private:
     Window              windowInstance_{};               /// ウィンドウインスタンス
     //
 
-    Dx12             dxgiInstance_{};                 /// Dx12 インスタンス
-    Dx12           deviceInstance_{};               /// デバイスインスタンス
-    Dx12     commandQueueInstance_{};         /// コマンドキューインスタンス
-    Dx12        swapChainInstance_{};            /// スワップチェインインスタンス
+    Dx12                dxgiInstance_{};                 /// Dx12 インスタンス
+    Dx12                deviceInstance_{};               /// デバイスインスタンス
+    Dx12                commandQueueInstance_{};         /// コマンドキューインスタンス
+    Dx12                swapChainInstance_{};            /// スワップチェインインスタンス
     
     //
 
-    descriptor_heap   descriptorHeapInstance_{};       /// ディスクリプタヒープインスタンス
-    render_target     renderTargetInstance_{};         /// レンダーターゲットインスタンス
-    command_allocator commandAllocatorInstance_[2]{};  /// コマンドアロケータインスタンス
-    command_list      commandListInstance_{};          /// コマンドリストインスタンス
+    descriptor_heap     descriptorHeapInstance_{};       /// ディスクリプタヒープインスタンス
+    render_target       renderTargetInstance_{};         /// レンダーターゲットインスタンス
+    command_allocator   commandAllocatorInstance_[2]{};  /// コマンドアロケータインスタンス
+    command_list        commandListInstance_{};          /// コマンドリストインスタンス
 
-    fence  fenceInstance_{};       /// フェンスインスタンス
-    UINT64 frameFenceValue_[2]{};  /// 現在のフレームのフェンス値
-    UINT64 nextFenceValue_ = 1;    /// 次のフレームのフェンス値
+    fence               fenceInstance_{};                /// フェンスインスタンス
+    UINT64              frameFenceValue_[2]{};           /// 現在のフレームのフェンス値
+    UINT64              nextFenceValue_ = 1;             /// 次のフレームのフェンス値
 
     //
 
-    root_signature      rootSignatureInstance_{};       /// ルートシグネチャインスタンス
-    shader             shaderInstance_{};              /// シェーダーインスタンス
+    root_signature      rootSignatureInstance_{};        /// ルートシグネチャインスタンス
+    shader              shaderInstance_{};               /// シェーダーインスタンス
     pipline_state_object piplineStateObjectInstance_{};  /// パイプラインステートオブジェクトインスタンス
-    triangle_polygon    trianglePolygonInstance_{};     /// 三角形ポリゴンインスタンス
+    triangle_polygon    trianglePolygonInstance_{};      /// 三角形ポリゴンインスタンス
 };
 
 //---------------------------------------------------------------------------------
