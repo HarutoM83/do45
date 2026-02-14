@@ -2,7 +2,7 @@
 #include <d3d12.h>
 #include <dxgi1_4.h>
 #include <cassert>
-#include "winmain.cpp"
+#include "winmain.h"
 
 class Dx12 final
 {
