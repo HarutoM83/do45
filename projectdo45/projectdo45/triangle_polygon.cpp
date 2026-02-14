@@ -11,7 +11,6 @@ namespace
     };
 }  // namespace
 
-
 triangle_polygon::~triangle_polygon() 
 {
     // 頂点バッファの解放
@@ -29,7 +28,8 @@ triangle_polygon::~triangle_polygon()
     }
 }
 
-[[nodiscard]] bool triangle_polygon::create(const Dx12& device) noexcept {
+[[nodiscard]] bool triangle_polygon::create(const Dx12& device) noexcept 
+{
     // 頂点バッファの生成
     if (!createVertexBuffer(device)) 
     {
@@ -43,7 +43,8 @@ triangle_polygon::~triangle_polygon()
     return true;
 }
 
-[[nodiscard]] bool triangle_polygon::createVertexBuffer(const Dx12& device) noexcept {
+[[nodiscard]] bool triangle_polygon::createVertexBuffer(const Dx12& device) noexcept 
+{
     // 今回利用する三角形の頂点データ
     Vertex triangleVertices[] = 
     {
@@ -120,8 +121,8 @@ triangle_polygon::~triangle_polygon()
     return true;
 }
 
-
-[[nodiscard]] bool triangle_polygon::createIndexBuffer(const Dx12& device) noexcept {
+[[nodiscard]] bool triangle_polygon::createIndexBuffer(const Dx12& device) noexcept 
+{
     uint16_t triangleIndices[] = 
     {
         0, 1, 2  // 三角形を構成する頂点のインデックス
@@ -153,7 +154,8 @@ triangle_polygon::~triangle_polygon()
     resourceDesc.Flags = D3D12_RESOURCE_FLAG_NONE;
 
     // インデックスバッファの生成
-    auto res = device.getd()->CreateCommittedResource(
+    auto res = device.getd()->CreateCommittedResource
+    (
         &heapProperty,
         D3D12_HEAP_FLAG_NONE,
         &resourceDesc,
@@ -187,7 +189,8 @@ triangle_polygon::~triangle_polygon()
     return true;
 }
 
-[[nodiscard]] void triangle_polygon::draw(const command_list& commandList) noexcept {
+[[nodiscard]] void triangle_polygon::draw(const command_list& commandList) noexcept 
+{
     // 頂点バッファの設定
     commandList.get()->IASetVertexBuffers(0, 1, &vertexBufferView_);
     // インデックスバッファの設定

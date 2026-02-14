@@ -11,16 +11,19 @@ struct VSInput
 struct VSOutput
 {
     float4 position : SV_POSITION; // 出力：変換後座標
-    float4 color : COLOR; // 入力：頂点色
+    float4 color : COLOR;          // 入力：頂点色
 };
 
 // ピクセルシェーダの入力構造体
 struct PSInput
 {
     float4 position : SV_POSITION; // 出力：画面座標
-    float4 color : COLOR; // 入力：補間された色
+    float4 color : COLOR;          // 入力：補間された色
 };
 
+// -------------------------------
+// 頂点シェーダ
+// -------------------------------
 VSOutput vs(VSInput input)
 {
     VSOutput output;
@@ -34,8 +37,12 @@ VSOutput vs(VSInput input)
     return output;
 }
 
+// -------------------------------
+// ピクセルシェーダ
+// -------------------------------
 float4 ps(PSInput input) : SV_TARGET
 {
+    // 色をそのまま出力
     return input.color;
 	//return pos;
 }
