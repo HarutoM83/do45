@@ -1,5 +1,6 @@
 #pragma once
 #include"Dx12.h"
+
 class shader final
 {
 public:
